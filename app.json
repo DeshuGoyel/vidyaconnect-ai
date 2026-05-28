@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "VidyaConnect AI",
+    "slug": "vidyaconnect-ai",
+    "scheme": "vidyaconnect",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#FDFAF5"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.vidyaconnect.ai"
+    },
+    "android": {
+      "package": "com.vidyaconnect.ai",
+      "adaptiveIcon": {
+        "backgroundColor": "#FF6B00"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-notifications"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

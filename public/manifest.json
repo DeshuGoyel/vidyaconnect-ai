@@ -1,0 +1,13 @@
+{
+  "name": "VidyaConnect AI",
+  "short_name": "VidyaConnect",
+  "description": "Apni Gali Ka Best Teacher",
+  "start_url": "/home",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#FF6B00",
+  "background_color": "#0A0A0F",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

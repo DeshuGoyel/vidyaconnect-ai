@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@500;700&family=Syne:wght@700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fdfaf5;
+  --foreground: #0a0a0f;
+  --card: #ffffff;
+  --border: #e8e3dc;
+  --saffron: #ff6b00;
+  --navy: #030630;
+  color-scheme: light;
+}
+
+.dark {
+  --background: #050508;
+  --foreground: #f7f7f8;
+  --card: #0a0a0f;
+  --border: #27272a;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  touch-action: manipulation;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "DM Sans", sans-serif;
+}
+
+::selection {
+  background: rgba(255, 107, 0, 0.22);
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 999px;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(255, 107, 0, 0.45);
+  outline-offset: 3px;
+}
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}

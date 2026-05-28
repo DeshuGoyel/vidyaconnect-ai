@@ -1,0 +1,177 @@
+import { AIReport, Booking, TeacherProfile } from "@/types/database";
+
+export const teachers: TeacherProfile[] = [
+  {
+    id: "11111111-1111-4111-8111-111111111111",
+    user: {
+      id: "11111111-1111-4111-8111-111111111111",
+      name: "Ananya Sharma",
+      avatar_url: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600",
+      locality: "Indiranagar",
+      city: "Bengaluru"
+    },
+    bio: "CBSE and ICSE math specialist focused on concept clarity, weekly testing, and confidence-building.",
+    tagline: "Maths ko simple banaane wali mentor",
+    experience_years: 8,
+    qualification: "M.Sc Mathematics",
+    subjects: ["Mathematics", "Science"],
+    classes_taught: ["Class 6", "Class 7", "Class 8", "Class 9"],
+    session_types: ["home", "online"],
+    price_home: 800,
+    price_online: 550,
+    price_group: 320,
+    service_radius_km: 4,
+    total_students: 72,
+    total_classes: 1260,
+    rating: 4.9,
+    total_reviews: 184,
+    is_verified: true,
+    aadhaar_verified: true,
+    background_checked: true,
+    verification_status: "verified",
+    free_demo_count: 3,
+    is_available: true,
+    is_featured: true,
+    intro_video_url: null,
+    demo_video_url: null,
+    earnings_total: 486000,
+    earnings_pending: 12600,
+    created_at: "2026-01-01T00:00:00.000Z",
+    updated_at: "2026-05-25T00:00:00.000Z",
+    distance_km: 0.8,
+    ai_match_score: 94
+  },
+  {
+    id: "22222222-2222-4222-8222-222222222222",
+    user: {
+      id: "22222222-2222-4222-8222-222222222222",
+      name: "Imran Khan",
+      avatar_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600",
+      locality: "Koramangala",
+      city: "Bengaluru"
+    },
+    bio: "Practical science teacher using experiments, visuals, and exam-focused revision plans.",
+    tagline: "Science through experiments",
+    experience_years: 6,
+    qualification: "B.Tech, B.Ed",
+    subjects: ["Science", "Physics", "Chemistry"],
+    classes_taught: ["Class 8", "Class 9", "Class 10"],
+    session_types: ["online", "group"],
+    price_home: 750,
+    price_online: 500,
+    price_group: 280,
+    service_radius_km: 5,
+    total_students: 54,
+    total_classes: 920,
+    rating: 4.7,
+    total_reviews: 119,
+    is_verified: true,
+    aadhaar_verified: true,
+    background_checked: false,
+    verification_status: "verified",
+    free_demo_count: 3,
+    is_available: true,
+    is_featured: false,
+    intro_video_url: null,
+    demo_video_url: null,
+    earnings_total: 332000,
+    earnings_pending: 8200,
+    created_at: "2026-01-10T00:00:00.000Z",
+    updated_at: "2026-05-25T00:00:00.000Z",
+    distance_km: 2.4,
+    ai_match_score: 88
+  },
+  {
+    id: "33333333-3333-4333-8333-333333333333",
+    user: {
+      id: "33333333-3333-4333-8333-333333333333",
+      name: "Meera Iyer",
+      avatar_url: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600",
+      locality: "HAL 2nd Stage",
+      city: "Bengaluru"
+    },
+    bio: "Language mentor for grammar, writing, spoken English, and school exam preparation.",
+    tagline: "English confidence for school and life",
+    experience_years: 10,
+    qualification: "M.A English",
+    subjects: ["English", "Social Studies"],
+    classes_taught: ["Class 5", "Class 6", "Class 7", "Class 8"],
+    session_types: ["home", "group"],
+    price_home: 650,
+    price_online: 450,
+    price_group: 250,
+    service_radius_km: 3,
+    total_students: 91,
+    total_classes: 1480,
+    rating: 4.8,
+    total_reviews: 206,
+    is_verified: true,
+    aadhaar_verified: true,
+    background_checked: true,
+    verification_status: "verified",
+    free_demo_count: 4,
+    is_available: true,
+    is_featured: true,
+    intro_video_url: null,
+    demo_video_url: null,
+    earnings_total: 612000,
+    earnings_pending: 16400,
+    created_at: "2025-12-01T00:00:00.000Z",
+    updated_at: "2026-05-25T00:00:00.000Z",
+    distance_km: 1.2,
+    ai_match_score: 82
+  }
+];
+
+export const bookings: Booking[] = [
+  {
+    id: "44444444-4444-4444-8444-444444444444",
+    student_id: "55555555-5555-4555-8555-555555555555",
+    teacher_id: teachers[0].id,
+    subject: "Mathematics",
+    class_grade: "Class 8",
+    session_type: "home",
+    scheduled_at: "2026-05-26T17:00:00.000+05:30",
+    duration_minutes: 60,
+    status: "confirmed",
+    is_free_trial: true,
+    amount: 0,
+    platform_fee: 0,
+    teacher_earning: 50,
+    payment_status: "success",
+    meeting_link: null,
+    agora_channel: null,
+    notes: "Fractions revision",
+    is_rated: false,
+    created_at: "2026-05-25T00:00:00.000Z"
+  }
+];
+
+export const latestReport: AIReport = {
+  id: "66666666-6666-4666-8666-666666666666",
+  student_id: "55555555-5555-4555-8555-555555555555",
+  parent_id: "77777777-7777-4777-8777-777777777777",
+  week_start: "2026-05-18",
+  week_end: "2026-05-24",
+  overall_score: 82,
+  attendance_percentage: 92,
+  summary_text:
+    "Rohan ne iss week Maths mein achha progress dikhaya. Fractions aur word problems par thoda focused revision karne se next test mein strong improvement aa sakta hai.",
+  subject_scores: { Mathematics: 82, Science: 68, English: 76 },
+  recommendations: [
+    { title: "Fractions practice", body: "Roz 15 minute mixed fraction questions solve karayein." },
+    { title: "Science diagrams", body: "Chapter revision ke baad diagram labelling practice karayein." },
+    { title: "Reading habit", body: "English ke liye 10 minute aloud reading helpful rahegi." }
+  ],
+  alerts: [
+    { level: "watch", title: "Fractions needs attention", body: "Accuracy last two sessions mein 58% rahi." },
+    { level: "good", title: "Attendance strong", body: "Rohan ne 12 mein se 11 classes attend ki." }
+  ],
+  learning_dna: {
+    style: "Visual + practice-led",
+    bestTime: "Evening",
+    attentionSpan: "Medium"
+  },
+  generated_at: "2026-05-24T14:30:00.000Z",
+  is_sent: true
+};
