@@ -36,7 +36,7 @@ export function StudyMaterials({ role }: { role?: "student" | "teacher" }) {
               </div>
             </div>
             {role !== "teacher" && (
-              <Button size="icon" variant="ghost" className="text-ink-400 hover:text-blue-600">
+              <Button size="md" variant="ghost" className="text-ink-400 hover:text-blue-600">
                 <Download className="h-4 w-4" />
               </Button>
             )}

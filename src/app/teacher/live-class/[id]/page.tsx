@@ -124,7 +124,7 @@ export default function TeacherLiveClass({ params }: { params: { id: string } })
         <Button 
           onClick={() => setMicOn(!micOn)} 
           variant="secondary" 
-          size="icon" 
+          size="md" 
           className={`h-12 w-12 rounded-full ${!micOn ? 'bg-red-500/20 text-red-500 hover:bg-red-500/30' : 'bg-ink-800 hover:bg-ink-700 border-0'}`}
         >
           {micOn ? <Mic className="h-5 w-5" /> : <MicOff className="h-5 w-5" />}
@@ -132,14 +132,14 @@ export default function TeacherLiveClass({ params }: { params: { id: string } })
         <Button 
           onClick={() => setCamOn(!camOn)} 
           variant="secondary" 
-          size="icon" 
+          size="md" 
           className={`h-12 w-12 rounded-full ${!camOn ? 'bg-red-500/20 text-red-500 hover:bg-red-500/30' : 'bg-ink-800 hover:bg-ink-700 border-0'}`}
         >
           {camOn ? <Video className="h-5 w-5" /> : <VideoOff className="h-5 w-5" />}
         </Button>
         <Button 
           variant="secondary" 
-          size="icon" 
+          size="md" 
           className="h-12 w-12 rounded-full bg-ink-800 hover:bg-ink-700 border-0"
         >
           <Share className="h-5 w-5" />

@@ -149,7 +149,7 @@ export default function DoubtSolverPage() {
           <Button 
             onClick={handleUploadPhoto}
             variant="secondary" 
-            size="icon" 
+            size="md" 
             className="h-12 w-12 shrink-0 rounded-2xl border-2 border-violet-200 bg-violet-50 text-violet-600 hover:bg-violet-100 hover:text-violet-700 hover:border-violet-300 transition-all"
           >
             <ImageIcon className="h-5 w-5" />
@@ -166,7 +166,7 @@ export default function DoubtSolverPage() {
             onClick={handleSend}
             disabled={!input.trim()}
             className="h-12 w-12 shrink-0 rounded-2xl bg-violet-600 text-white shadow-md hover:bg-violet-700 transition-all"
-            size="icon"
+            size="md"
           >
             <Send className="h-5 w-5" />
           </Button>
