@@ -148,7 +148,7 @@ export default function DoubtSolverPage() {
         <div className="max-w-md mx-auto md:max-w-none flex gap-2 relative">
           <Button 
             onClick={handleUploadPhoto}
-            variant="outline" 
+            variant="secondary" 
             size="icon" 
             className="h-12 w-12 shrink-0 rounded-2xl border-2 border-violet-200 bg-violet-50 text-violet-600 hover:bg-violet-100 hover:text-violet-700 hover:border-violet-300 transition-all"
           >
