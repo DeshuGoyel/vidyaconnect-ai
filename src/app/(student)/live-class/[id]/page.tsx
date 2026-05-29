@@ -109,7 +109,7 @@ export default function StudentLiveClass({ params }: { params: { id: string } })
 
         <Button 
           onClick={() => router.back()} 
-          variant="destructive" 
+          variant="secondary" 
           className="h-12 px-6 rounded-full font-bold shadow-lg hover:bg-red-600"
         >
           <PhoneOff className="h-5 w-5 mr-2" /> Leave Class
