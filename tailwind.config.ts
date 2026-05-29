@@ -48,7 +48,7 @@ const config: Config = {
         danger: "#EF4444"
       },
       fontFamily: {
-        heading: ["Syne", "sans-serif"],
+        heading: ["Outfit", "sans-serif"],
         body: ["DM Sans", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"]
       },

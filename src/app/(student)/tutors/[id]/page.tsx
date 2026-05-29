@@ -38,14 +38,14 @@ export default function TutorProfilePage() {
 
   return (
     <PageWrapper className="pb-24">
-      <TopBar title={tutor.full_name} showBack />
+      <TopBar title={tutor.user?.name || "Teacher"} />
 
       {/* Intro Video / Hero Section */}
       <div className="relative -mx-4 -mt-2 h-64 bg-ink-900 md:mx-0 md:mt-4 md:rounded-3xl overflow-hidden shadow-elevated">
         {/* Placeholder for video player */}
         <div className="absolute inset-0 bg-gradient-to-t from-ink-900/80 to-transparent z-10" />
         <img 
-          src={tutor.avatar_url || "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=600"} 
+          src={tutor.user?.avatar_url || "https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=600"} 
           alt="Video Thumbnail" 
           className="h-full w-full object-cover opacity-60"
         />
@@ -60,7 +60,7 @@ export default function TutorProfilePage() {
           <div className="flex items-end justify-between">
             <div>
               <h1 className="font-heading text-2xl font-extrabold text-white flex items-center gap-2">
-                {tutor.full_name}
+                {tutor.user?.name || "Teacher"}
                 <CheckCircle2 className="h-5 w-5 text-emerald-400" />
               </h1>
               <p className="text-sm font-semibold text-white/80">{tutor.qualification}</p>
@@ -96,7 +96,7 @@ export default function TutorProfilePage() {
 
           {/* About */}
           <section>
-            <h2 className="font-heading text-xl font-extrabold text-ink-900 mb-3">About {tutor.full_name.split(' ')[0]}</h2>
+            <h2 className="font-heading text-xl font-extrabold text-ink-900 mb-3">About {(tutor.user?.name || "Teacher").split(' ')[0]}</h2>
             <p className="text-sm font-semibold text-ink-600 leading-relaxed">
               {tutor.bio || "An experienced educator passionate about making complex concepts simple to understand. Specializes in interactive learning and conceptual clarity. Book a demo class to experience the teaching style!"}
             </p>
@@ -145,7 +145,7 @@ export default function TutorProfilePage() {
             <div className="text-center mb-5 border-b border-ink-100 pb-5">
               <p className="text-sm font-bold text-ink-500 uppercase tracking-widest mb-1">Session Rate</p>
               <div className="flex items-baseline justify-center gap-1">
-                <span className="font-heading text-4xl font-extrabold text-ink-900">₹{tutor.hourly_rate}</span>
+                <span className="font-heading text-4xl font-extrabold text-ink-900">₹{tutor.price_home || tutor.price_online}</span>
                 <span className="text-ink-500 font-semibold">/hr</span>
               </div>
             </div>
@@ -173,7 +173,7 @@ export default function TutorProfilePage() {
         <div className="flex items-center justify-between gap-4 max-w-md mx-auto">
           <div>
             <p className="text-xs font-bold text-ink-400 uppercase">Rate</p>
-            <p className="font-heading text-lg font-extrabold text-ink-900">₹{tutor.hourly_rate}<span className="text-xs">/hr</span></p>
+            <p className="font-heading text-lg font-extrabold text-ink-900">₹{tutor.price_home || tutor.price_online}<span className="text-xs">/hr</span></p>
           </div>
           <Button size="lg" className="flex-1 bg-saffron-500 text-white shadow-md">
             Book Free Demo

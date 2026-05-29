@@ -86,8 +86,8 @@ export default function TutorsPage() {
             <Card className="overflow-hidden hover:shadow-elevated transition-shadow duration-300 group">
               <div className="relative h-40 bg-ink-100 w-full overflow-hidden">
                 {/* Fallback image if no avatar, or video thumbnail placeholder */}
-                {tutor.avatar_url ? (
-                  <img src={tutor.avatar_url} alt={tutor.full_name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                {tutor.user?.avatar_url ? (
+                  <img src={tutor.user?.avatar_url} alt={tutor.user?.name || "Teacher"} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 ) : (
                   <div className="h-full w-full bg-gradient-to-br from-saffron-200 to-orange-100 flex items-center justify-center">
                     <Video className="h-10 w-10 text-saffron-400/50" />
@@ -104,7 +104,7 @@ export default function TutorsPage() {
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="font-heading text-lg font-extrabold text-ink-900 flex items-center gap-1">
-                      {tutor.full_name}
+                      {tutor.user?.name || "Teacher"}
                       <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                     </h3>
                     <p className="text-xs font-bold text-ink-500 line-clamp-1">{tutor.experience_years} years exp • {tutor.qualification}</p>
@@ -126,7 +126,7 @@ export default function TutorsPage() {
 
                 <div className="mt-4 flex items-center justify-between border-t border-ink-100 pt-3">
                   <div className="text-sm">
-                    <span className="font-extrabold text-ink-900">₹{tutor.hourly_rate}</span>
+                    <span className="font-extrabold text-ink-900">₹{tutor.price_home || tutor.price_online}</span>
                     <span className="text-ink-400 font-semibold text-xs">/hr</span>
                   </div>
                   <Button size="sm" className="bg-saffron-500 hover:bg-saffron-600 text-white rounded-xl">
