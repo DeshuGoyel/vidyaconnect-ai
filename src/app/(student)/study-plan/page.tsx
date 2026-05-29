@@ -34,7 +34,7 @@ export default function StudyPlanPage() {
           <div>
             <h2 className="font-heading text-xl font-extrabold text-white">Your Smart Path</h2>
             <p className="mt-1 text-sm font-semibold text-white/80 leading-relaxed">
-              Based on your recent tests and homework, I've identified 2 areas to focus on this week. Completing these will boost your overall score by an estimated 8%.
+              Based on your recent tests and homework, I&apos;ve identified 2 areas to focus on this week. Completing these will boost your overall score by an estimated 8%.
             </p>
           </div>
         </div>

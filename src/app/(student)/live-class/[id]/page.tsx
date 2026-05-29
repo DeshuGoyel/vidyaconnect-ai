@@ -68,7 +68,7 @@ export default function StudentLiveClass({ params }: { params: { id: string } })
             <div className="flex-1 p-4 overflow-y-auto flex flex-col gap-3 text-sm">
               <div className="bg-ink-800 p-2 rounded-lg rounded-tl-none self-start max-w-[85%]">
                 <span className="font-bold text-saffron-400 text-xs block mb-1">Priya Rao</span>
-                Welcome everyone! Let's start with chapter 4.
+                Welcome everyone! Let&apos;s start with chapter 4.
               </div>
             </div>
             <div className="p-3 border-t border-ink-800">

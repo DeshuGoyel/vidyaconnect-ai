@@ -133,7 +133,7 @@ export default function TutorProfilePage() {
                 </div>
               </div>
               <p className="mt-3 text-sm font-semibold text-ink-600">
-                "Excellent teacher! Explains math concepts very clearly. I finally understand Algebra thanks to him."
+                &quot;Excellent teacher! Explains math concepts very clearly. I finally understand Algebra thanks to him.&quot;
               </p>
             </Card>
           </section>

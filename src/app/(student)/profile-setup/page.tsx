@@ -40,7 +40,7 @@ export default function StudentProfileSetupPage() {
         </span>
         <div>
           <p className="text-sm font-extrabold text-ink-800">Tell us what you want to learn</p>
-          <p className="text-xs font-semibold text-ink-400">We'll show you the best teachers nearby</p>
+          <p className="text-xs font-semibold text-ink-400">We&apos;ll show you the best teachers nearby</p>
         </div>
       </div>
 
