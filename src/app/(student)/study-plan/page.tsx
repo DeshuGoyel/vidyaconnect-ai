@@ -51,7 +51,7 @@ export default function StudyPlanPage() {
             <Card key={idx} className="flex flex-col border-l-4" style={{ borderLeftColor: area.severity === 'high' ? '#ef4444' : '#f59e0b' }}>
               <div className="flex items-start justify-between">
                 <div>
-                  <Badge tone={area.severity === 'high' ? 'danger' : 'warning'} className="mb-2 uppercase text-[10px]">
+                  <Badge tone={area.severity === 'high' ? 'red' : 'gold'} className="mb-2 uppercase text-[10px]">
                     {area.severity} Priority
                   </Badge>
                   <p className="font-heading text-lg font-extrabold text-ink-800">{area.topic}</p>
