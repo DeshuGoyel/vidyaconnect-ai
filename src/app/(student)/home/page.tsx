@@ -1,5 +1,8 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Mic, Search } from "lucide-react";
+import { Search } from "lucide-react";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { TopBar } from "@/components/layout/TopBar";
 import { Badge } from "@/components/ui/badge";
@@ -7,10 +10,24 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { TeacherCard } from "@/components/teacher/TeacherCard";
 import { AIMatchCard } from "@/components/ai/AIMatchCard";
-import { teachers } from "@/data/mock";
+import { teachers as mockTeachers } from "@/data/mock";
 import { timeGreeting } from "@/utils/formatters";
+import { VoiceSearchButton } from "@/components/shared/VoiceSearchButton";
+import { getTeachers } from "@/lib/supabase/queries";
+import { TeacherProfile } from "@/types/database";
 
 export default function StudentHomePage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [tutors, setTutors] = useState<TeacherProfile[]>(mockTeachers);
+
+  useEffect(() => {
+    getTeachers().then(data => setTutors(data));
+  }, []);
+
+  const handleVoiceSearchResult = (text: string) => {
+    setSearchQuery(text);
+  };
+
   return (
     <PageWrapper>
       <TopBar />
@@ -20,8 +37,13 @@ export default function StudentHomePage() {
       </section>
       <div className="mt-6 flex h-14 items-center gap-3 rounded-2xl border border-ink-100 bg-white px-4 shadow-card">
         <Search className="h-5 w-5 text-ink-300" />
-        <input className="min-w-0 flex-1 bg-transparent text-sm font-bold outline-none" placeholder="Subject, teacher, colony..." />
-        <Mic className="h-5 w-5 text-saffron-500" />
+        <input 
+          className="min-w-0 flex-1 bg-transparent text-sm font-bold outline-none text-ink-800 placeholder-ink-300" 
+          placeholder="Subject, teacher, colony..." 
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <VoiceSearchButton onResult={handleVoiceSearchResult} />
       </div>
       <section className="mt-6 rounded-3xl bg-gradient-to-r from-success to-emerald-500 p-5 text-white shadow-card">
         <Badge tone="dark">3 FREE Classes Remaining</Badge>
@@ -39,12 +61,12 @@ export default function StudentHomePage() {
           <Link href="/map" className="text-sm font-extrabold text-saffron-500">See All on Map</Link>
         </div>
         <div className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2">
-          {teachers.map((teacher) => <TeacherCard key={teacher.id} teacher={teacher} compact />)}
+          {tutors.map((teacher) => <TeacherCard key={teacher.id} teacher={teacher} compact />)}
         </div>
       </section>
       <section className="mt-8 grid gap-4">
         <h2 className="font-heading text-2xl font-extrabold text-ink-800">AI Recommended For You</h2>
-        {teachers.slice(0, 2).map((teacher, index) => (
+        {tutors.slice(0, 2).map((teacher, index) => (
           <AIMatchCard
             key={teacher.id}
             teacher={teacher}

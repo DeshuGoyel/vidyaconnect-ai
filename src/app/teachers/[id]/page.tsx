@@ -7,23 +7,23 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { StarRating } from "@/components/shared/StarRating";
-import { teachers } from "@/data/mock";
+import { getTeacherById } from "@/lib/supabase/queries";
 import { formatRupee, sessionTypeLabel } from "@/utils/formatters";
 
 interface Props {
   params: { id: string };
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const teacher = teachers.find((item) => item.id === params.id);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const teacher = await getTeacherById(params.id);
   return {
     title: teacher ? `${teacher.user?.name} — ${teacher.subjects[0]} Teacher in ${teacher.user?.city}` : "Teacher",
     description: teacher?.bio ?? "Verified VidyaConnect teacher profile"
   };
 }
 
-export default function TeacherPage({ params }: Props) {
-  const teacher = teachers.find((item) => item.id === params.id);
+export default async function TeacherPage({ params }: Props) {
+  const teacher = await getTeacherById(params.id);
   if (!teacher) notFound();
 
   return (

@@ -3,7 +3,7 @@ import { colors } from "@/constants/colors";
 
 export function Avatar({ uri, name, size = 56 }: { uri?: string; name: string; size?: number }) {
   if (uri) {
-    return <Image source={{ uri }} style={[styles.image, { width: size, height: size, borderRadius: size / 2 }]} />;
+    return <Image source={{ uri }} style={[styles.image, { width: size, height: size, borderRadius: size / 2 }]} alt={name} />;
   }
 
   return (

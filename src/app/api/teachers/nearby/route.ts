@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
-import { teachers } from "@/data/mock";
+import { getTeachers } from "@/lib/supabase/queries";
 
 export async function GET() {
-  return NextResponse.json({ teachers });
+  const teachersList = await getTeachers();
+  return NextResponse.json({ teachers: teachersList });
 }

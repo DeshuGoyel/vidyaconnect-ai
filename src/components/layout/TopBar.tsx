@@ -1,11 +1,23 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Bell, GraduationCap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export function TopBar({ title = "VidyaConnect AI" }: { title?: string }) {
+  const pathname = usePathname();
+
+  let homeUrl = "/home";
+  if (pathname?.startsWith("/parent")) {
+    homeUrl = "/parent/dashboard";
+  } else if (pathname?.startsWith("/teacher")) {
+    homeUrl = "/teacher/dashboard";
+  }
+
   return (
     <header className="flex items-center justify-between">
-      <Link href="/home" className="flex items-center gap-3">
+      <Link href={homeUrl} className="flex items-center gap-3">
         <span className="grid h-11 w-11 place-items-center rounded-xl bg-saffron-500 text-white shadow-card">
           <GraduationCap className="h-6 w-6" />
         </span>

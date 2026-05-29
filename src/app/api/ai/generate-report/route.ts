@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { latestReport } from "@/data/mock";
+import { getLatestReport } from "@/lib/supabase/queries";
 
 const schema = z.object({
   studentId: z.string(),
@@ -11,5 +11,6 @@ const schema = z.object({
 export async function POST(request: Request) {
   const parsed = schema.safeParse(await request.json());
   if (!parsed.success) return NextResponse.json({ error: "Invalid report request", code: "VALIDATION_ERROR" }, { status: 400 });
-  return NextResponse.json(latestReport);
+  const report = await getLatestReport(parsed.data.studentId);
+  return NextResponse.json(report);
 }

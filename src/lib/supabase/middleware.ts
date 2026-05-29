@@ -7,12 +7,21 @@ const protectedPrefixes = ["/home", "/map", "/ai-match", "/booking", "/dashboard
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request });
 
+  // Bypass session check if Supabase is not configured (allows seamless local mock-data UX)
+  if (
+    !appConfig.supabaseUrl ||
+    !appConfig.supabaseAnonKey ||
+    appConfig.supabaseUrl.includes("dummy")
+  ) {
+    return response;
+  }
+
   const supabase = createServerClient(appConfig.supabaseUrl, appConfig.supabaseAnonKey, {
     cookies: {
       getAll() {
         return request.cookies.getAll();
       },
-      setAll(cookiesToSet) {
+      setAll(cookiesToSet: Array<{ name: string; value: string; options?: any }>) {
         cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
         response = NextResponse.next({ request });
         cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options));

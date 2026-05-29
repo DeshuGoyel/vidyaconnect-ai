@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BookingCalendar } from "@/components/booking/BookingCalendar";
 import { BookingConfirmModal } from "@/components/booking/BookingConfirmModal";
 import { FreeTrialBanner } from "@/components/booking/FreeTrialBanner";
@@ -10,16 +10,24 @@ import { TeacherMiniCard } from "@/components/teacher/TeacherMiniCard";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { PageWrapper } from "@/components/layout/PageWrapper";
-import { teachers } from "@/data/mock";
-import { SessionType } from "@/types/database";
+import { teachers as mockTeachers } from "@/data/mock";
+import { SessionType, TeacherProfile } from "@/types/database";
 import { formatRupee } from "@/utils/formatters";
+import { getTeacherById } from "@/lib/supabase/queries";
 
 export default function BookingPage({ params }: { params: { teacherId: string } }) {
-  const teacher = teachers.find((item) => item.id === params.teacherId) ?? teachers[0];
+  const [teacher, setTeacher] = useState<TeacherProfile>(mockTeachers[0]);
   const [sessionType, setSessionType] = useState<SessionType>("home");
   const [date, setDate] = useState("");
   const [slot, setSlot] = useState("");
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    getTeacherById(params.teacherId).then((data) => {
+      if (data) setTeacher(data);
+    });
+  }, [params.teacherId]);
+
   const prices = { home: teacher.price_home ?? 0, online: teacher.price_online ?? 0, group: teacher.price_group ?? 0 };
 
   return (
