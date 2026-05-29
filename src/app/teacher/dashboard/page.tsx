@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Loader2, Check, TrendingUp, Users, Calendar, Star, IndianRupee, Bell, ChevronRight } from "lucide-react";
 import { AIAlertBox } from "@/components/ai/AIAlertBox";
 import { EarningsChart } from "@/components/dashboard/EarningsChart";
+import { StudyMaterials } from "@/components/dashboard/StudyMaterials";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { PageWrapper } from "@/components/layout/PageWrapper";
@@ -81,7 +82,7 @@ export default function TeacherDashboardPage() {
       </section>
 
       {/* Stats Grid */}
-      <div className="mt-5 grid grid-cols-2 gap-3">
+      <div className="mt-5 grid grid-cols-2 sm:grid-cols-4 gap-3">
         {stats.map((stat) => {
           const Icon = stat.icon;
           return (
@@ -133,6 +134,9 @@ export default function TeacherDashboardPage() {
         <AIAlertBox level="watch" title="Rohan struggling in Trigonometry" body="Visual examples and practice worksheets recommended." />
         <AIAlertBox level="good" title="Priya is top performer 🎉" body="Send praise note to parent and suggest Olympiad prep." />
       </section>
+
+      {/* Study Materials */}
+      <div className="mt-5"><StudyMaterials role="teacher" /></div>
 
       {/* Earnings Chart */}
       <Card className="mt-5">

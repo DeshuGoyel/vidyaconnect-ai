@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { bookings, teachers } from "@/data/mock";
+import Link from "next/link";
 
 export function UpcomingClasses() {
   return (
@@ -15,7 +16,9 @@ export function UpcomingClasses() {
                 <p className="font-extrabold text-ink-800">{booking.subject}</p>
                 <p className="text-sm font-semibold text-ink-400">{teacher?.user?.name} • 5:00 PM</p>
               </div>
-              <Button size="sm">Join</Button>
+              <Link href={`/live-class/${booking.id}`}>
+                <Button size="sm">Join</Button>
+              </Link>
             </div>
           );
         })}

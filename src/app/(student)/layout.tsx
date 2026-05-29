@@ -1,10 +1,5 @@
-import { BottomNav } from "@/components/layout/BottomNav";
+import { AppShell } from "@/components/layout/AppShell";
 
 export default function StudentLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="min-h-screen bg-cream">
-      {children}
-      <BottomNav />
-    </div>
-  );
+  return <AppShell>{children}</AppShell>;
 }

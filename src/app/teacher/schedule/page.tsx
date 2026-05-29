@@ -69,9 +69,11 @@ export default function TeacherSchedulePage() {
                 </div>
               </div>
               {cls.mins && (
-                <Button size="sm" className="shrink-0">
-                  <Video className="mr-1.5 h-4 w-4" /> Join
-                </Button>
+                <Link href={`/teacher/live-class/1`}>
+                  <Button size="sm" className="shrink-0">
+                    <Video className="mr-1.5 h-4 w-4" /> Join
+                  </Button>
+                </Link>
               )}
             </Card>
           ))}

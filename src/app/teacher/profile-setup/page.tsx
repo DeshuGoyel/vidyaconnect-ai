@@ -70,6 +70,15 @@ export default function TeacherProfileSetupPage() {
             </div>
             <Input placeholder="Highest Qualification (e.g. B.Ed, M.Sc.)" value={qualification} onChange={(e) => setQualification(e.target.value)} />
             <Input placeholder="Years of Experience" value={experience} onChange={(e) => setExperience(e.target.value)} inputMode="numeric" />
+            
+            <div className="mt-2 rounded-xl border-2 border-dashed border-ink-200 bg-ink-50/50 p-4 text-center">
+              <div className="grid h-10 w-10 mx-auto place-items-center rounded-full bg-saffron-100 text-saffron-600 mb-2">
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+              </div>
+              <p className="text-sm font-extrabold text-ink-800">Intro Video (Optional)</p>
+              <p className="text-xs font-semibold text-ink-400 mb-3">Teachers with videos get 5x more trial bookings</p>
+              <Button size="sm" variant="secondary" className="bg-white">Upload Video</Button>
+            </div>
           </div>
         </Card>
 

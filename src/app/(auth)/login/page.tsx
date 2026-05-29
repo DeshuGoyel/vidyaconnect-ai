@@ -80,129 +80,146 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative mx-auto flex min-h-screen max-w-md flex-col bg-white">
-      {/* Gradient top bar */}
-      <div className="h-2 w-full bg-gradient-to-r from-saffron-400 via-saffron-500 to-amber-400" />
-
-      <div className="flex flex-1 flex-col px-6 py-8">
-        {/* Header */}
-        <div className="flex items-center gap-3">
-          <Link href="/onboarding" className="grid h-9 w-9 place-items-center rounded-full border border-ink-100 text-ink-600 hover:bg-ink-50 transition">
-            <ArrowLeft className="h-4 w-4" />
-          </Link>
-          <div className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-xl bg-saffron-500 text-white">
-              <GraduationCap className="h-4 w-4" />
-            </span>
-            <span className="font-heading text-base font-extrabold text-ink-800">VidyaConnect AI</span>
+    <div className="flex min-h-screen bg-white">
+      {/* Left: Graphic (Desktop only) */}
+      <div className="hidden md:flex flex-1 flex-col justify-center items-center bg-saffron-50 p-12 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-saffron-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse-ring" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse-ring" style={{ animationDelay: "1s" }} />
+        
+        <div className="relative z-10 text-center max-w-md">
+          <div className="grid h-24 w-24 place-items-center rounded-3xl bg-saffron-500 text-white shadow-elevated mx-auto mb-10">
+            <GraduationCap className="h-12 w-12" />
           </div>
+          <h2 className="font-heading text-4xl font-extrabold text-ink-900 mb-6 leading-tight">Apni Gali Ka<br />Best Teacher</h2>
+          <p className="text-lg font-medium text-ink-600">Join the fastest growing hyper-local tuition platform connecting students with the best educators in their neighborhood.</p>
         </div>
+      </div>
 
-        <div className="mt-10">
-          <p className="text-sm font-extrabold uppercase tracking-wider text-saffron-500">Welcome Back</p>
-          <h1 className="mt-2 font-heading text-3xl font-extrabold leading-tight text-ink-800">
-            {step === "phone" ? "Login with your mobile" : "Enter the OTP sent to you"}
-          </h1>
-          <p className="mt-2 text-sm font-semibold text-ink-400">
-            {step === "phone"
-              ? "We'll send a one-time password to your registered number"
-              : `OTP sent to +91-${phone} • Use 000000 for demo`}
-          </p>
-        </div>
+      {/* Right: Form */}
+      <div className="relative flex w-full max-w-md flex-col bg-white md:w-1/2 lg:w-[520px] md:max-w-none md:flex-none mx-auto md:mx-0 shadow-[-20px_0_40px_rgba(0,0,0,0.04)] z-10">
+        {/* Gradient top bar */}
+        <div className="h-2 w-full bg-gradient-to-r from-saffron-400 via-saffron-500 to-amber-400" />
 
-        {/* Role picker */}
-        <div className="mt-8">
-          <p className="mb-2 text-xs font-extrabold uppercase tracking-wider text-ink-400">I am a</p>
-          <div className="flex gap-2">
-            {ROLES.map((r) => (
-              <button
-                key={r.value}
-                type="button"
-                onClick={() => { setRole(r.value); navigator.vibrate?.(4); }}
-                className={cn(
-                  "flex flex-1 flex-col items-center gap-1 rounded-2xl border-2 py-3 text-xs font-extrabold transition-all",
-                  role === r.value
-                    ? "border-saffron-500 bg-saffron-50 text-saffron-700 shadow-md scale-105"
-                    : "border-ink-100 bg-white text-ink-500 hover:border-ink-200"
-                )}
-              >
-                <span className="text-xl">{r.emoji}</span>
-                {r.label}
-              </button>
-            ))}
+        <div className="flex flex-1 flex-col px-6 py-8 md:px-12 md:py-12 justify-center">
+          {/* Header */}
+          <div className="flex items-center gap-3 md:hidden mb-4">
+            <Link href="/onboarding" className="grid h-9 w-9 place-items-center rounded-full border border-ink-100 text-ink-600 hover:bg-ink-50 transition">
+              <ArrowLeft className="h-4 w-4" />
+            </Link>
+            <div className="flex items-center gap-2">
+              <span className="grid h-8 w-8 place-items-center rounded-xl bg-saffron-500 text-white">
+                <GraduationCap className="h-4 w-4" />
+              </span>
+              <span className="font-heading text-base font-extrabold text-ink-800">VidyaConnect AI</span>
+            </div>
           </div>
-        </div>
 
-        {/* Form */}
-        <div className="mt-8 grid gap-4">
-          {step === "phone" ? (
-            <div className="relative">
-              <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                <span className="flex items-center gap-1 text-sm font-bold text-ink-500">
-                  <Phone className="h-4 w-4" />
-                  +91
-                </span>
+          <div className="mt-4 md:mt-0">
+            <p className="text-sm font-extrabold uppercase tracking-wider text-saffron-500">Welcome Back</p>
+            <h1 className="mt-2 font-heading text-3xl font-extrabold leading-tight text-ink-800">
+              {step === "phone" ? "Login with your mobile" : "Enter the OTP sent to you"}
+            </h1>
+            <p className="mt-2 text-sm font-semibold text-ink-400">
+              {step === "phone"
+                ? "We'll send a one-time password to your registered number"
+                : `OTP sent to +91-${phone} • Use 000000 for demo`}
+            </p>
+          </div>
+
+          {/* Role picker */}
+          <div className="mt-8">
+            <p className="mb-2 text-xs font-extrabold uppercase tracking-wider text-ink-400">I am a</p>
+            <div className="flex gap-2">
+              {ROLES.map((r) => (
+                <button
+                  key={r.value}
+                  type="button"
+                  onClick={() => { setRole(r.value); navigator.vibrate?.(4); }}
+                  className={cn(
+                    "flex flex-1 flex-col items-center gap-1 rounded-2xl border-2 py-3 text-xs font-extrabold transition-all",
+                    role === r.value
+                      ? "border-saffron-500 bg-saffron-50 text-saffron-700 shadow-md scale-105"
+                      : "border-ink-100 bg-white text-ink-500 hover:border-ink-200"
+                  )}
+                >
+                  <span className="text-xl">{r.emoji}</span>
+                  {r.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Form */}
+          <div className="mt-8 grid gap-4">
+            {step === "phone" ? (
+              <div className="relative">
+                <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                  <span className="flex items-center gap-1 text-sm font-bold text-ink-500">
+                    <Phone className="h-4 w-4" />
+                    +91
+                  </span>
+                </div>
+                <Input
+                  placeholder="9876543210"
+                  inputMode="numeric"
+                  required
+                  pattern="[0-9]{10}"
+                  maxLength={10}
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
+                  className="pl-16 h-12"
+                />
               </div>
-              <Input
-                placeholder="9876543210"
-                inputMode="numeric"
-                required
-                pattern="[0-9]{10}"
-                maxLength={10}
-                value={phone}
-                onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
-                className="pl-16"
-              />
-            </div>
-          ) : (
-            <div>
-              <OTPInput value={otp} onChange={setOtp} />
-              <button
-                type="button"
-                onClick={() => { setStep("phone"); setOtp(""); setError(""); }}
-                className="mt-3 text-xs font-bold text-saffron-500 hover:underline"
-              >
-                ← Change number
-              </button>
-            </div>
-          )}
-
-          {error && (
-            <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm font-bold text-red-600">
-              {error}
-            </div>
-          )}
-
-          <Button
-            size="lg"
-            onClick={step === "phone" ? handleSendOTP : handleVerifyOTP}
-            disabled={loading || (step === "phone" ? phone.replace(/\D/g, "").length !== 10 : otp.length < 4)}
-            className="h-14 text-base font-extrabold"
-          >
-            {loading ? (
-              <span className="flex items-center gap-2">
-                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                {step === "phone" ? "Sending OTP..." : "Verifying..."}
-              </span>
-            ) : step === "phone" ? (
-              "Send OTP →"
             ) : (
-              <span className="flex items-center gap-2">
-                <ShieldCheck className="h-5 w-5" /> Verify & Login
-              </span>
+              <div>
+                <OTPInput value={otp} onChange={setOtp} />
+                <button
+                  type="button"
+                  onClick={() => { setStep("phone"); setOtp(""); setError(""); }}
+                  className="mt-3 text-xs font-bold text-saffron-500 hover:underline"
+                >
+                  ← Change number
+                </button>
+              </div>
             )}
-          </Button>
-        </div>
 
-        <p className="mt-8 text-center text-sm font-semibold text-ink-400">
-          Don&apos;t have an account?{" "}
-          <Link href="/signup" className="font-extrabold text-saffron-500 hover:underline">
-            Sign up free
-          </Link>
-        </p>
+            {error && (
+              <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm font-bold text-red-600">
+                {error}
+              </div>
+            )}
 
-        <div className="mt-auto pt-10 text-center text-xs font-semibold text-ink-300">
-          By continuing, you agree to our Terms of Service & Privacy Policy
+            <Button
+              size="lg"
+              onClick={step === "phone" ? handleSendOTP : handleVerifyOTP}
+              disabled={loading || (step === "phone" ? phone.replace(/\D/g, "").length !== 10 : otp.length < 4)}
+              className="mt-4 h-14 text-base font-extrabold"
+            >
+              {loading ? (
+                <span className="flex items-center gap-2">
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  {step === "phone" ? "Sending OTP..." : "Verifying..."}
+                </span>
+              ) : step === "phone" ? (
+                "Send OTP →"
+              ) : (
+                <span className="flex items-center gap-2">
+                  <ShieldCheck className="h-5 w-5" /> Verify & Login
+                </span>
+              )}
+            </Button>
+          </div>
+
+          <p className="mt-8 text-center text-sm font-semibold text-ink-400">
+            Don&apos;t have an account?{" "}
+            <Link href="/signup" className="font-extrabold text-saffron-500 hover:underline">
+              Sign up free
+            </Link>
+          </p>
+
+          <div className="mt-auto pt-10 text-center text-xs font-semibold text-ink-300">
+            By continuing, you agree to our Terms of Service & Privacy Policy
+          </div>
         </div>
       </div>
     </div>

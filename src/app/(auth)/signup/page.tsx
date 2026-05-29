@@ -92,245 +92,273 @@ export default function SignupPage() {
     }
 
     navigator.vibrate?.(10);
-    if (role === "student") router.push("/home");
-    else if (role === "teacher") router.push("/teacher/dashboard");
+    if (role === "student") router.push("/profile-setup");
+    else if (role === "teacher") router.push("/teacher/profile-setup");
     else router.push("/parent/dashboard");
   };
 
   return (
-    <div className="relative mx-auto min-h-screen max-w-md bg-white">
-      {/* Gradient top bar */}
-      <div className="h-2 w-full bg-gradient-to-r from-saffron-400 via-saffron-500 to-amber-400" />
-
-      <div className="flex flex-col px-6 py-8">
-        {/* Header */}
-        <div className="flex items-center gap-3">
-          {step !== "role" ? (
-            <button
-              onClick={() => { setStep(step === "otp" ? "details" : "role"); setError(""); }}
-              className="grid h-9 w-9 place-items-center rounded-full border border-ink-100 text-ink-600 hover:bg-ink-50 transition"
-            >
-              <ArrowLeft className="h-4 w-4" />
-            </button>
-          ) : (
-            <Link href="/onboarding" className="grid h-9 w-9 place-items-center rounded-full border border-ink-100 text-ink-600 hover:bg-ink-50 transition">
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
-          )}
-          <div className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-xl bg-saffron-500 text-white">
-              <GraduationCap className="h-4 w-4" />
-            </span>
-            <span className="font-heading text-base font-extrabold text-ink-800">VidyaConnect AI</span>
+    <div className="flex min-h-screen bg-white">
+      {/* Left: Graphic (Desktop only) */}
+      <div className="hidden md:flex flex-1 flex-col justify-center items-center bg-saffron-50 p-12 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-saffron-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse-ring" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse-ring" style={{ animationDelay: "1s" }} />
+        
+        <div className="relative z-10 text-center max-w-md">
+          <div className="grid h-24 w-24 place-items-center rounded-3xl bg-saffron-500 text-white shadow-elevated mx-auto mb-10">
+            <GraduationCap className="h-12 w-12" />
           </div>
+          <h2 className="font-heading text-4xl font-extrabold text-ink-900 mb-6 leading-tight">Apni Gali Ka<br />Best Teacher</h2>
+          <p className="text-lg font-medium text-ink-600">Join the fastest growing hyper-local tuition platform connecting students with the best educators in their neighborhood.</p>
         </div>
+      </div>
 
-        {/* Progress bar */}
-        <div className="mt-6 flex gap-1.5">
-          {(["role", "details", "otp"] as Step[]).map((s, i) => (
-            <div
-              key={s}
-              className={cn(
-                "h-1.5 flex-1 rounded-full transition-all",
-                step === s ? "bg-saffron-500" :
-                  (step === "details" && i === 0) || (step === "otp" && i < 2) ? "bg-saffron-300" : "bg-ink-100"
-              )}
-            />
-          ))}
-        </div>
+      {/* Right: Form */}
+      <div className="relative flex w-full max-w-md flex-col bg-white md:w-1/2 lg:w-[520px] md:max-w-none md:flex-none mx-auto md:mx-0 shadow-[-20px_0_40px_rgba(0,0,0,0.04)] z-10 overflow-y-auto">
+        {/* Gradient top bar */}
+        <div className="h-2 w-full shrink-0 bg-gradient-to-r from-saffron-400 via-saffron-500 to-amber-400" />
 
-        {/* Step: Role Selection */}
-        {step === "role" && (
-          <>
-            <div className="mt-8">
-              <p className="text-sm font-extrabold uppercase tracking-wider text-saffron-500">Step 1 of 3</p>
-              <h1 className="mt-2 font-heading text-3xl font-extrabold leading-tight text-ink-800">
-                Who are you?
-              </h1>
-              <p className="mt-2 text-sm font-semibold text-ink-400">
-                Choose your role to get a personalized experience
-              </p>
+        <div className="flex flex-1 flex-col px-6 py-8 md:px-12 md:py-12">
+          {/* Header */}
+          <div className="flex items-center gap-3 mb-6 md:mb-8 md:hidden">
+            {step !== "role" ? (
+              <button
+                onClick={() => { setStep(step === "otp" ? "details" : "role"); setError(""); }}
+                className="grid h-9 w-9 place-items-center rounded-full border border-ink-100 text-ink-600 hover:bg-ink-50 transition"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </button>
+            ) : (
+              <Link href="/onboarding" className="grid h-9 w-9 place-items-center rounded-full border border-ink-100 text-ink-600 hover:bg-ink-50 transition">
+                <ArrowLeft className="h-4 w-4" />
+              </Link>
+            )}
+            <div className="flex items-center gap-2">
+              <span className="grid h-8 w-8 place-items-center rounded-xl bg-saffron-500 text-white">
+                <GraduationCap className="h-4 w-4" />
+              </span>
+              <span className="font-heading text-base font-extrabold text-ink-800">VidyaConnect AI</span>
             </div>
+          </div>
+          
+          <div className="hidden md:flex items-center gap-3 mb-8">
+            {step !== "role" && (
+              <button
+                onClick={() => { setStep(step === "otp" ? "details" : "role"); setError(""); }}
+                className="flex items-center gap-2 text-sm font-bold text-ink-500 hover:text-ink-900 transition"
+              >
+                <ArrowLeft className="h-4 w-4" /> Back
+              </button>
+            )}
+          </div>
 
-            <div className="mt-8 grid gap-3">
-              {roles.map((item) => {
-                const Icon = item.icon;
-                const isSelected = role === item.value;
-                return (
-                  <button
-                    key={item.value}
-                    type="button"
-                    onClick={() => { setRole(item.value); navigator.vibrate?.(4); }}
-                    className={cn(
-                      "flex items-center gap-4 rounded-2xl border-2 p-4 text-left transition-all",
-                      isSelected
-                        ? "border-saffron-500 bg-saffron-50/30 shadow-lg scale-[1.01]"
-                        : "border-ink-100 bg-white hover:border-ink-200 hover:shadow-sm"
-                    )}
-                  >
-                    <span className={cn(
-                      "grid h-14 w-14 shrink-0 place-items-center rounded-2xl transition",
-                      isSelected ? `${item.color} text-white` : `${item.lightColor} ${item.textColor}`
-                    )}>
-                      <Icon className="h-7 w-7" />
-                    </span>
-                    <div>
-                      <p className="font-heading text-lg font-extrabold text-ink-800">{item.title}</p>
-                      <p className="mt-0.5 text-sm font-semibold leading-5 text-ink-400">{item.body}</p>
-                    </div>
-                    {isSelected && (
-                      <span className="ml-auto shrink-0 text-saffron-500">
-                        <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                        </svg>
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
+          {/* Progress bar */}
+          <div className="flex gap-1.5 shrink-0">
+            {(["role", "details", "otp"] as Step[]).map((s, i) => (
+              <div
+                key={s}
+                className={cn(
+                  "h-1.5 flex-1 rounded-full transition-all",
+                  step === s ? "bg-saffron-500" :
+                    (step === "details" && i === 0) || (step === "otp" && i < 2) ? "bg-saffron-300" : "bg-ink-100"
+                )}
+              />
+            ))}
+          </div>
 
-            <Button
-              size="lg"
-              className="mt-8 h-14 text-base font-extrabold"
-              onClick={() => { setStep("details"); navigator.vibrate?.(6); }}
-            >
-              Continue as {roles.find((r) => r.value === role)?.title} <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </>
-        )}
-
-        {/* Step: Details */}
-        {step === "details" && (
-          <>
-            <div className="mt-8">
-              <p className="text-sm font-extrabold uppercase tracking-wider text-saffron-500">Step 2 of 3</p>
-              <h1 className="mt-2 font-heading text-3xl font-extrabold leading-tight text-ink-800">
-                Your details
-              </h1>
-              <p className="mt-2 text-sm font-semibold text-ink-400">
-                We&apos;ll use this to personalise your experience
-              </p>
-            </div>
-
-            <div className="mt-8 grid gap-4">
-              <div>
-                <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-ink-600">Full Name</label>
-                <Input
-                  placeholder="Rohan Kumar"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="h-12"
-                />
+          {/* Step: Role Selection */}
+          {step === "role" && (
+            <>
+              <div className="mt-8 shrink-0">
+                <p className="text-sm font-extrabold uppercase tracking-wider text-saffron-500">Step 1 of 3</p>
+                <h1 className="mt-2 font-heading text-3xl font-extrabold leading-tight text-ink-800">
+                  Who are you?
+                </h1>
+                <p className="mt-2 text-sm font-semibold text-ink-400">
+                  Choose your role to get a personalized experience
+                </p>
               </div>
-              <div>
-                <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-ink-600">Mobile Number</label>
-                <div className="relative">
-                  <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                    <span className="flex items-center gap-1 text-sm font-bold text-ink-500">
-                      <Phone className="h-4 w-4" /> +91
-                    </span>
-                  </div>
+
+              <div className="mt-8 grid gap-3 shrink-0">
+                {roles.map((item) => {
+                  const Icon = item.icon;
+                  const isSelected = role === item.value;
+                  return (
+                    <button
+                      key={item.value}
+                      type="button"
+                      onClick={() => { setRole(item.value); navigator.vibrate?.(4); }}
+                      className={cn(
+                        "flex items-center gap-4 rounded-2xl border-2 p-4 text-left transition-all",
+                        isSelected
+                          ? "border-saffron-500 bg-saffron-50/30 shadow-lg scale-[1.01]"
+                          : "border-ink-100 bg-white hover:border-ink-200 hover:shadow-sm"
+                      )}
+                    >
+                      <span className={cn(
+                        "grid h-14 w-14 shrink-0 place-items-center rounded-2xl transition",
+                        isSelected ? `${item.color} text-white` : `${item.lightColor} ${item.textColor}`
+                      )}>
+                        <Icon className="h-7 w-7" />
+                      </span>
+                      <div>
+                        <p className="font-heading text-lg font-extrabold text-ink-800">{item.title}</p>
+                        <p className="mt-0.5 text-sm font-semibold leading-5 text-ink-400">{item.body}</p>
+                      </div>
+                      {isSelected && (
+                        <span className="ml-auto shrink-0 text-saffron-500">
+                          <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <Button
+                size="lg"
+                className="mt-8 h-14 text-base font-extrabold shrink-0"
+                onClick={() => { setStep("details"); navigator.vibrate?.(6); }}
+              >
+                Continue as {roles.find((r) => r.value === role)?.title} <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </>
+          )}
+
+          {/* Step: Details */}
+          {step === "details" && (
+            <>
+              <div className="mt-8 shrink-0">
+                <p className="text-sm font-extrabold uppercase tracking-wider text-saffron-500">Step 2 of 3</p>
+                <h1 className="mt-2 font-heading text-3xl font-extrabold leading-tight text-ink-800">
+                  Your details
+                </h1>
+                <p className="mt-2 text-sm font-semibold text-ink-400">
+                  We&apos;ll use this to personalise your experience
+                </p>
+              </div>
+
+              <div className="mt-8 grid gap-4 shrink-0">
+                <div>
+                  <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-ink-600">Full Name</label>
                   <Input
-                    placeholder="9876543210"
-                    inputMode="numeric"
+                    placeholder="Rohan Kumar"
                     required
-                    pattern="[0-9]{10}"
-                    maxLength={10}
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
-                    className="h-12 pl-16"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="h-12"
                   />
                 </div>
-              </div>
-              <div>
-                <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-ink-600">Locality</label>
-                <Input placeholder="Indiranagar, Bengaluru" defaultValue="Indiranagar" className="h-12" />
-              </div>
-
-              {error && (
-                <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm font-bold text-red-600">
-                  {error}
+                <div>
+                  <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-ink-600">Mobile Number</label>
+                  <div className="relative">
+                    <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
+                      <span className="flex items-center gap-1 text-sm font-bold text-ink-500">
+                        <Phone className="h-4 w-4" /> +91
+                      </span>
+                    </div>
+                    <Input
+                      placeholder="9876543210"
+                      inputMode="numeric"
+                      required
+                      pattern="[0-9]{10}"
+                      maxLength={10}
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))}
+                      className="h-12 pl-16"
+                    />
+                  </div>
                 </div>
-              )}
-
-              <Button
-                size="lg"
-                className="h-14 text-base font-extrabold"
-                onClick={handleSendOTP}
-                disabled={loading}
-              >
-                {loading ? (
-                  <span className="flex items-center gap-2">
-                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                    Sending OTP...
-                  </span>
-                ) : (
-                  <>Send OTP <ArrowRight className="ml-2 h-5 w-5" /></>
-                )}
-              </Button>
-            </div>
-          </>
-        )}
-
-        {/* Step: OTP */}
-        {step === "otp" && (
-          <>
-            <div className="mt-8">
-              <p className="text-sm font-extrabold uppercase tracking-wider text-saffron-500">Step 3 of 3</p>
-              <h1 className="mt-2 font-heading text-3xl font-extrabold leading-tight text-ink-800">
-                Verify your number
-              </h1>
-              <p className="mt-2 text-sm font-semibold text-ink-400">
-                Enter the OTP sent to +91-{phone} • Use <strong>000000</strong> for demo
-              </p>
-            </div>
-
-            <div className="mt-8 grid gap-4">
-              <OTPInput value={otp} onChange={setOtp} />
-
-              {error && (
-                <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm font-bold text-red-600">
-                  {error}
+                <div>
+                  <label className="mb-1.5 block text-xs font-extrabold uppercase tracking-wider text-ink-600">Locality</label>
+                  <Input placeholder="Indiranagar, Bengaluru" defaultValue="Indiranagar" className="h-12" />
                 </div>
-              )}
 
-              <Button
-                size="lg"
-                className="h-14 text-base font-extrabold"
-                onClick={handleVerifyOTP}
-                disabled={loading || otp.length < 4}
-              >
-                {loading ? (
-                  <span className="flex items-center gap-2">
-                    <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
-                    Creating account...
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2">
-                    <ShieldCheck className="h-5 w-5" /> Create Account
-                  </span>
+                {error && (
+                  <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm font-bold text-red-600">
+                    {error}
+                  </div>
                 )}
-              </Button>
 
-              <button
-                type="button"
-                onClick={handleSendOTP}
-                className="text-center text-sm font-bold text-saffron-500 hover:underline"
-              >
-                Didn&apos;t receive OTP? Resend
-              </button>
-            </div>
-          </>
-        )}
+                <Button
+                  size="lg"
+                  className="mt-4 h-14 text-base font-extrabold"
+                  onClick={handleSendOTP}
+                  disabled={loading}
+                >
+                  {loading ? (
+                    <span className="flex items-center gap-2">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                      Sending OTP...
+                    </span>
+                  ) : (
+                    <>Send OTP <ArrowRight className="ml-2 h-5 w-5" /></>
+                  )}
+                </Button>
+              </div>
+            </>
+          )}
 
-        <p className="mt-8 text-center text-sm font-semibold text-ink-400">
-          Already have an account?{" "}
-          <Link href="/login" className="font-extrabold text-saffron-500 hover:underline">
-            Login
-          </Link>
-        </p>
+          {/* Step: OTP */}
+          {step === "otp" && (
+            <>
+              <div className="mt-8 shrink-0">
+                <p className="text-sm font-extrabold uppercase tracking-wider text-saffron-500">Step 3 of 3</p>
+                <h1 className="mt-2 font-heading text-3xl font-extrabold leading-tight text-ink-800">
+                  Verify your number
+                </h1>
+                <p className="mt-2 text-sm font-semibold text-ink-400">
+                  Enter the OTP sent to +91-{phone} • Use <strong>000000</strong> for demo
+                </p>
+              </div>
+
+              <div className="mt-8 grid gap-4 shrink-0">
+                <OTPInput value={otp} onChange={setOtp} />
+
+                {error && (
+                  <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm font-bold text-red-600">
+                    {error}
+                  </div>
+                )}
+
+                <Button
+                  size="lg"
+                  className="mt-4 h-14 text-base font-extrabold"
+                  onClick={handleVerifyOTP}
+                  disabled={loading || otp.length < 4}
+                >
+                  {loading ? (
+                    <span className="flex items-center gap-2">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                      Creating account...
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-2">
+                      <ShieldCheck className="h-5 w-5" /> Create Account
+                    </span>
+                  )}
+                </Button>
+
+                <button
+                  type="button"
+                  onClick={handleSendOTP}
+                  className="mt-2 text-center text-sm font-bold text-saffron-500 hover:underline"
+                >
+                  Didn&apos;t receive OTP? Resend
+                </button>
+              </div>
+            </>
+          )}
+
+          <p className="mt-auto pt-8 text-center text-sm font-semibold text-ink-400 shrink-0">
+            Already have an account?{" "}
+            <Link href="/login" className="font-extrabold text-saffron-500 hover:underline">
+              Login
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

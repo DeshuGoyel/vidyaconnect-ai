@@ -2,15 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BarChart3, Calendar, Home, Map, UserRound, Users, IndianRupee, Group } from "lucide-react";
+import { BarChart3, Calendar, Home, Map, UserRound, Users, IndianRupee, Group, Sparkles } from "lucide-react";
 import { cn } from "@/utils/helpers";
 
 const studentItems = [
   { href: "/home", label: "Home", icon: Home },
-  { href: "/map", label: "Map", icon: Map },
-  { href: "/my-bookings", label: "Bookings", icon: Calendar },
-  { href: "/groups", label: "Colony Groups", icon: Group },
-  { href: "/dashboard", label: "Progress", icon: BarChart3 }
+  { href: "/tutors", label: "Tutors", icon: Users },
+  { href: "/dashboard", label: "Progress", icon: BarChart3 },
+  { href: "/doubt-solver", label: "AI Solver", icon: Sparkles }
 ];
 
 const parentItems = [
@@ -39,7 +38,7 @@ export function BottomNav() {
   }
 
   return (
-    <nav className="safe-bottom fixed inset-x-0 bottom-0 z-50 border-t border-ink-100 bg-white/95 px-2 pt-2 shadow-elevated backdrop-blur md:hidden">
+    <nav className="safe-bottom fixed inset-x-0 bottom-0 z-50 border-t border-ink-100 bg-white/80 px-2 pt-2 shadow-elevated backdrop-blur-xl md:hidden">
       <div className={cn(
         "mx-auto grid max-w-md",
         items.length === 5 ? "grid-cols-5" : "grid-cols-4"
