@@ -209,7 +209,7 @@ export default function SignupPage() {
                 Your details
               </h1>
               <p className="mt-2 text-sm font-semibold text-ink-400">
-                We'll use this to personalise your experience
+                We&apos;ll use this to personalise your experience
               </p>
             </div>
 
@@ -319,7 +319,7 @@ export default function SignupPage() {
                 onClick={handleSendOTP}
                 className="text-center text-sm font-bold text-saffron-500 hover:underline"
               >
-                Didn't receive OTP? Resend
+                Didn&apos;t receive OTP? Resend
               </button>
             </div>
           </>

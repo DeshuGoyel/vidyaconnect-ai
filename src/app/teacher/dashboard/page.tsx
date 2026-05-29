@@ -101,7 +101,7 @@ export default function TeacherDashboardPage() {
       {/* Today's Schedule */}
       <Card className="mt-5">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="font-heading text-xl font-extrabold text-ink-800">Today's Classes</h2>
+          <h2 className="font-heading text-xl font-extrabold text-ink-800">Today&apos;s Classes</h2>
           <Link href="/teacher/schedule" className="text-sm font-extrabold text-saffron-500">
             View Schedule →
           </Link>

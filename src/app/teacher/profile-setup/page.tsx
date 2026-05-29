@@ -164,7 +164,7 @@ export default function TeacherProfileSetupPage() {
             onChange={(e) => setRadius(e.target.value)}
             className="mt-2 w-full accent-saffron-500"
           />
-          <p className="mt-1 text-xs font-semibold text-ink-400">You'll receive booking requests within {radius} km of your location</p>
+          <p className="mt-1 text-xs font-semibold text-ink-400">You&apos;ll receive booking requests within {radius} km of your location</p>
         </Card>
 
         <Button
