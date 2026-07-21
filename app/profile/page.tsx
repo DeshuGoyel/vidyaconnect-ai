@@ -36,7 +36,7 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* View Switcher (Student vs Parent Portal) */}
+        {/* View Switcher (Student vs Parent Portal vs Teacher Portal) */}
         <div className="mt-5 p-1 bg-ink-100 rounded-xl flex">
           <button
             onClick={() => setActiveTab("student")}
@@ -58,6 +58,17 @@ export default function ProfilePage() {
           >
             <HeartHandshake size={14} /> Parent Portal View
           </button>
+        </div>
+
+        {/* Teacher Portal Switcher Link */}
+        <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between">
+          <span className="text-xs text-slate-500">Are you a registered Tutor?</span>
+          <Link
+            href="/teacher-dashboard"
+            className="text-xs font-semibold text-indigo-600 hover:underline flex items-center gap-1"
+          >
+            Open Teacher Dashboard →
+          </Link>
         </div>
       </div>
 
