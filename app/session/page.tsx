@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles, Loader2, AlertTriangle, Printer,
@@ -101,7 +102,8 @@ function SimpleMarkdown({ text }: { text: string }) {
   );
 }
 
-export default function SessionPage() {
+function SessionContent() {
+  const searchParams = useSearchParams();
   const [topic, setTopic]                 = useState("");
   const [grade, setGrade]                 = useState("Class 7");
   const [language, setLanguage]           = useState<Language>("English");
@@ -109,6 +111,15 @@ export default function SessionPage() {
   const [loading, setLoading]             = useState(false);
   const [error, setError]                 = useState<string | null>(null);
   const [result, setResult]               = useState<{ diagnosis: string; explanation: string; practice: string; worksheet: string } | null>(null);
+
+  useEffect(() => {
+    const t = searchParams.get("topic");
+    const g = searchParams.get("grade");
+    const m = searchParams.get("misconception");
+    if (t) setTopic(t);
+    if (g) setGrade(g);
+    if (m) setMisconception(m);
+  }, [searchParams]);
 
   // ── Auto-fill example chip ──
   const fillExample = (ex: (typeof EXAMPLES)[0]) => {
@@ -448,5 +459,13 @@ export default function SessionPage() {
 
       <BottomNav />
     </div>
+  );
+}
+
+export default function SessionPage() {
+  return (
+    <Suspense fallback={<div className="p-4 text-center text-xs text-slate-500">Loading Session Co-Pilot...</div>}>
+      <SessionContent />
+    </Suspense>
   );
 }
