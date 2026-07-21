@@ -32,12 +32,16 @@ export default function LoginPage() {
     setLoading(true);
     await new Promise((r) => setTimeout(r, 1000));
     
+    if (typeof window !== "undefined") {
+      localStorage.setItem("userRole", role);
+    }
+
     if (role === "teacher") {
-      router.push("/teacher-dashboard");
+      router.push("/profile?role=teacher");
     } else if (role === "parent") {
-      router.push("/profile");
+      router.push("/profile?role=parent");
     } else {
-      router.push("/home");
+      router.push("/profile?role=student");
     }
   };
 
