@@ -1,15 +1,15 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Home, Search, Sparkles } from "lucide-react";
+import { Home, Search, Sparkles, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// ── Only 3 demo-ready screens are active ─────────────────────────────────────
 const NAV_ITEMS = [
-  { href: "/home",     icon: Home,     label: "Home",    active: true  },
-  { href: "/teachers", icon: Search,   label: "Discover", active: true  },
-  { href: "/session",  icon: Sparkles, label: "AI Copilot", active: true },
+  { href: "/home",     icon: Home,     label: "Home"     },
+  { href: "/teachers", icon: Search,   label: "Discover" },
+  { href: "/session",  icon: Sparkles, label: "AI Copilot"},
+  { href: "/profile",  icon: User,     label: "Profile"  },
 ];
 
 export function BottomNav() {
@@ -19,13 +19,13 @@ export function BottomNav() {
     <nav className="fixed bottom-0 left-0 right-0 z-50 glass border-t border-ink-100">
       <div className="flex items-center justify-around px-4 py-2 max-w-md mx-auto">
         {NAV_ITEMS.map(({ href, icon: Icon, label }) => {
-          const isActive = pathname === href || pathname.startsWith(href + "/");
+          const isActive = pathname === href || (href !== "/home" && pathname.startsWith(href));
           return (
             <Link
               key={href}
               href={href}
               className={cn(
-                "flex flex-col items-center gap-0.5 px-5 py-2 rounded-xl transition-all duration-200",
+                "flex flex-col items-center gap-0.5 px-4 py-2 rounded-xl transition-all duration-200",
                 isActive ? "text-brand-500" : "text-ink-400 hover:text-ink-700"
               )}
             >
