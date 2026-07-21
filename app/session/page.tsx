@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Sparkles, Loader2, AlertCircle, Printer,
@@ -143,7 +143,6 @@ export default function SessionPage() {
   const [error, setError]               = useState<string | null>(null);
   const [result, setResult]             = useState<{ explanation: string; practice: string; worksheet: string } | null>(null);
   const [isMock, setIsMock]             = useState(false);
-  const printRef = useRef<HTMLDivElement>(null);
 
   // ── Fill example ──
   const fillExample = (ex: (typeof EXAMPLES)[0]) => {

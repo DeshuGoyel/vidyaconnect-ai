@@ -33,7 +33,7 @@ export function TeacherCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.06, duration: 0.3, ease: "easeOut" }}
     >
-      <Link href={`/teachers/${id}`}>
+      <Link href="/teachers">
         <div className="bg-white rounded-2xl border border-ink-100 shadow-card p-5 transition-all duration-200 hover:shadow-elevated hover:border-ink-200 active:scale-[0.98]">
           {/* Header */}
           <div className="flex items-start gap-3">
@@ -118,7 +118,7 @@ export function TeacherCardMini({
       transition={{ delay: index * 0.07, duration: 0.3 }}
       className="snap-start flex-shrink-0 w-52"
     >
-      <Link href={`/teachers/${id}`}>
+      <Link href="/teachers">
         <div className="bg-white rounded-2xl border border-ink-100 shadow-card p-4 transition-all duration-200 hover:shadow-elevated hover:border-ink-200 active:scale-[0.97]">
           <div className="relative w-10 h-10 mb-3">
             <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-semibold text-sm ${avatarBg}`}>

@@ -13,7 +13,6 @@ export default function TeachersPage() {
   const [query, setQuery] = useState("");
   const [activeSubject, setActiveSubject] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState("Best Match");
-  const [loading, _] = useState(false);
 
   const filtered = TEACHERS.filter((t) => {
     const matchQuery =
